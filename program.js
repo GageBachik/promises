@@ -1,9 +1,11 @@
 var q = require('q');
 var defer = q.defer();
 //make a promise
-defer.resolve('SECOND');
+var attachTitle = function(str){
+	return 'DR. ' + str;
+}
+defer.resolve('MANHATTAN');
 
 var promise = defer.promise;
 // use promise
-promise.then(console.log, console.log);
-console.log('FIRST');
+promise.then(attachTitle).then(console.log);
