@@ -3,12 +3,13 @@ var defer = q.defer();
 //make a promise
 setTimeout(function(){
 	defer.resolve(console.log);
-}, 1000)
+	defer.reject(console.log);
+}, 300);
 
 var promise = defer.promise;
 // use promise
 promise.then(function(callback){
-	callback('RESOLVED!');
-}, function(error){
-	console.log('promise failed: ', error);
+	callback('I FIRED');
+}, function(callback){
+	callback('I DID NOT FIRE');
 });
